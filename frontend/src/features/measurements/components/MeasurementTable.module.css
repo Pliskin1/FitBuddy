@@ -1,0 +1,56 @@
+.wrap {
+  /* relative: skriveni tekst za čitače ekrana (position: absolute) ostaje unutar okvira koji se skroluje */
+  position: relative;
+  overflow-x: auto;
+  margin: 0 calc(var(--space-2) * -1);
+}
+
+.table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: var(--text-md);
+  font-variant-numeric: tabular-nums;
+}
+
+.table th {
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--border);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: var(--space-3) var(--space-2);
+  border-bottom: 1px solid var(--color-line-soft);
+  white-space: nowrap;
+}
+
+.table tr:last-child td {
+  border-bottom: 0;
+}
+
+.num {
+  text-align: right;
+}
+
+.table th.num {
+  text-align: right;
+}
+
+.date {
+  font-weight: 600;
+}
+
+.edit {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: var(--touch-min);
+  font-weight: 600;
+}

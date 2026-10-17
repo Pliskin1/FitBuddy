@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<title>Klijent – zakazivanje termina</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&amp;family=Barlow+Condensed:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#121A16}a:hover{color:#4E5953}
+.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div style="width: 390px; height: 900px; box-sizing: border-box; background: #F1F3F0; color: #121A16; font-family: 'Barlow', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+  <main style="flex: 1; min-height: 0; padding: 20px 16px 16px; display: flex; flex-direction: column; gap: 12px">
+
+    <header style="padding: 0 4px">
+      <h1 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 34px; line-height: 1">Termini</h1>
+      <div style="font-size: 14px; color: #4E5953; margin-top: 4px">Trener: Nikola Vuković · termin traje 60 min</div>
+    </header>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 0 4px">
+      <span style="font-size: 17px; font-weight: 700">Oktobar 2026</span>
+      <div style="display: flex; gap: 6px">
+        <button type="button" aria-label="Prethodna sedmica" style="width: 44px; height: 44px; border-radius: 22px; border: 1px solid #DCE1DD; background: #FFFFFF; color: #121A16; display: flex; align-items: center; justify-content: center; padding: 0">
+          <svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg></button>
+        <button type="button" aria-label="Sljedeća sedmica" style="width: 44px; height: 44px; border-radius: 22px; border: 1px solid #DCE1DD; background: #FFFFFF; color: #121A16; display: flex; align-items: center; justify-content: center; padding: 0">
+          <svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></button>
+      </div>
+    </div>
+
+    <div role="group" aria-label="Izbor dana" style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px">
+      <sc-for list="{{days}}" as="d" hint-placeholder-count="7">
+        <button type="button" onClick="{{d.pick}}" disabled="{{d.off}}" aria-pressed="{{d.sel}}" aria-label="{{d.aria}}" style="height: 60px; border: 0; border-radius: 14px; background: {{d.bg}}; font-family: 'Barlow', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 0; opacity: {{d.op}}">
+          <span style="font-size: 12px; color: {{d.sub}}">{{d.day}}</span>
+          <span style="font-size: 18px; font-weight: 700; color: {{d.fg}}">{{d.num}}</span>
+        </button>
+      </sc-for>
+    </div>
+
+    <section aria-label="Slobodni termini" style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-size: 16px; font-weight: 600">Slobodni termini · {{dayTitle}}</h2>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+        <sc-for list="{{slots}}" as="s" hint-placeholder-count="9">
+          <button type="button" onClick="{{s.pick}}" disabled="{{s.taken}}" aria-pressed="{{s.sel}}" aria-label="{{s.aria}}" style="height: 52px; box-sizing: border-box; border-radius: 12px; border: {{s.border}}; background: {{s.bg}}; color: {{s.fg}}; font-family: 'Barlow', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; padding: 0">
+            <span style="font-size: 17px; font-weight: 700; text-decoration: {{s.deco}}">{{s.time}}</span>
+            <sc-if value="{{s.taken}}" hint-placeholder-val="{{false}}">
+              <span style="font-size: 11px; font-weight: 600">Zauzeto</span>
+            </sc-if>
+          </button>
+        </sc-for>
+      </div>
+      <label style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 4px 0; font-size: 15px; font-weight: 600; cursor: pointer">
+        <input type="checkbox" checked="{{repeat}}" onChange="{{toggleRepeat}}" style="width: 22px; height: 22px; margin: 0; accent-color: #121A16">
+        Ponavljaj svake sedmice u isto vrijeme
+      </label>
+      <div style="display: flex; gap: 8px; font-size: 13px; color: #4E5953; line-height: 1.4">
+        <svg class="ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; margin-top: 1px"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 7.5v.5"></path></svg>
+        <span>Besplatno otkazivanje najkasnije 24 h prije termina. Trener potvrđuje zahtjev.</span>
+      </div>
+    </section>
+
+    <button type="button" style="height: 52px; border-radius: 14px; border: 0; background: #121A16; color: #FFFFFF; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 16px">{{cta}}</button>
+
+    <section aria-label="Moji naredni termini" style="display: flex; flex-direction: column; gap: 8px">
+      <h2 style="margin: 4px 4px 0; font-size: 16px; font-weight: 600">Moji naredni termini</h2>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 16px; background: #FFFFFF; border: 1px solid #DCE1DD">
+        <div style="width: 48px; flex: none; text-align: center">
+          <div style="font-size: 12px; color: #4E5953">Pon</div>
+          <div style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 24px; line-height: 1">19</div>
+        </div>
+        <div style="flex: 1; min-width: 0">
+          <div style="font-size: 15px; font-weight: 600">18:00 – 19:00</div>
+          <div style="font-size: 13px; color: #4E5953">Dan B – Noge i leđa</div>
+        </div>
+        <span style="display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 999px; background: #E6F2EA; color: #1F7A45; font-size: 13px; font-weight: 600">
+          <svg class="ic" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Potvrđen</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 16px; background: #FFFFFF; border: 1px solid #DCE1DD">
+        <div style="width: 48px; flex: none; text-align: center">
+          <div style="font-size: 12px; color: #4E5953">Čet</div>
+          <div style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 24px; line-height: 1">22</div>
+        </div>
+        <div style="flex: 1; min-width: 0">
+          <div style="font-size: 15px; font-weight: 600">18:00 – 19:00</div>
+          <div style="font-size: 13px; color: #4E5953">Dan C – Cijelo tijelo</div>
+        </div>
+        <span style="display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 999px; background: #F8EEDC; color: #8F5207; font-size: 13px; font-weight: 600">
+          <svg class="ic" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Na čekanju</span>
+      </div>
+    </section>
+  </main>
+
+  <nav aria-label="Glavna navigacija" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); background: #FFFFFF; border-top: 1px solid #DCE1DD; padding: 8px 6px 18px">
+    <a href="Klijent-Pocetna.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; text-decoration: none; color: #4E5953; font-size: 12px; font-weight: 600">
+      <span style="display: flex; align-items: center; justify-content: center; width: 48px; height: 28px">
+        <svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg></span>Početna</a>
+    <a href="Klijent-Trening.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; text-decoration: none; color: #4E5953; font-size: 12px; font-weight: 600">
+      <span style="display: flex; align-items: center; justify-content: center; width: 48px; height: 28px">
+        <svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"></path></svg></span>Trening</a>
+    <a href="Klijent-Jelovnik.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; text-decoration: none; color: #4E5953; font-size: 12px; font-weight: 600">
+      <span style="display: flex; align-items: center; justify-content: center; width: 48px; height: 28px">
+        <svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v18M4 3v5a3 3 0 0 0 6 0V3"></path><path d="M18 3c-2 0-3.5 2.5-3.5 6.5S16 14 18 14v7"></path></svg></span>Jelovnik</a>
+    <a href="Klijent-Termini.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; text-decoration: none; color: #121A16; font-size: 12px; font-weight: 700">
+      <span style="display: flex; align-items: center; justify-content: center; width: 48px; height: 28px; border-radius: 14px; background: #C5F04A">
+        <svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="2.5"></rect><path d="M16 2.5v4M8 2.5v4M3 10h18"></path></svg></span>Termini</a>
+    <a href="Klijent-Mjerenja.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; text-decoration: none; color: #4E5953; font-size: 12px; font-weight: 600">
+      <span style="display: flex; align-items: center; justify-content: center; width: 48px; height: 28px">
+        <svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"></path><path d="m7 15 4-4 3 3 5-6"></path></svg></span>Mjerenja</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { date: 20, slot: '17:00', repeat: false };
+  }
+  renderVals() {
+    const st = this.state;
+    const week = [
+      { day: 'Pon', full: 'ponedjeljak', num: 19, taken: ['10:00', '18:00'] },
+      { day: 'Uto', full: 'utorak', num: 20, taken: ['10:00', '18:00'] },
+      { day: 'Sri', full: 'srijeda', num: 21, taken: ['08:00', '12:00', '19:00'] },
+      { day: 'Čet', full: 'četvrtak', num: 22, taken: ['17:00', '18:00'] },
+      { day: 'Pet', full: 'petak', num: 23, taken: ['09:00', '16:00'] },
+      { day: 'Sub', full: 'subota', num: 24, taken: ['10:00'] },
+      { day: 'Ned', full: 'nedjelja', num: 25, off: true, taken: [] }
+    ];
+    const times = ['08:00', '09:00', '10:00', '12:00', '16:00', '17:00', '18:00', '19:00', '20:00'];
+    const cur = week.find((w) => w.num === st.date) || week[1];
+    const days = week.map((w) => {
+      const sel = w.num === st.date;
+      return {
+        day: w.day,
+        num: w.num,
+        off: !!w.off,
+        sel,
+        aria: w.full + ', ' + w.num + '. oktobar' + (w.off ? ' – neradni dan' : ''),
+        bg: sel ? '#121A16' : '#FFFFFF',
+        fg: sel ? '#C5F04A' : '#121A16',
+        sub: sel ? '#C9D1CC' : '#4E5953',
+        op: w.off ? '0.45' : '1',
+        pick: () => {
+          const firstFree = times.find((t) => !w.taken.includes(t)) || '';
+          const keep = !w.taken.includes(st.slot) ? st.slot : firstFree;
+          this.setState({ date: w.num, slot: keep });
+        }
+      };
+    });
+    const slots = times.map((t) => {
+      const taken = cur.taken.includes(t);
+      const sel = !taken && t === st.slot;
+      return {
+        time: t,
+        taken,
+        sel,
+        aria: t + (taken ? ' – zauzeto' : sel ? ' – izabrano' : ' – slobodno'),
+        bg: sel ? '#C5F04A' : taken ? '#F1F3F0' : '#FFFFFF',
+        fg: taken ? '#7A847F' : '#121A16',
+        border: sel ? '2px solid #121A16' : '1.5px solid #DCE1DD',
+        deco: taken ? 'line-through' : 'none',
+        pick: () => this.setState({ slot: t })
+      };
+    });
+    const dd = String(cur.num) + '.10.';
+    return {
+      days,
+      slots,
+      dayTitle: cur.full + ', ' + cur.num + '. oktobar',
+      repeat: st.repeat,
+      toggleRepeat: () => this.setState({ repeat: !this.state.repeat }),
+      cta: 'Pošalji zahtjev · ' + cur.day + ' ' + dd + ' u ' + st.slot + (st.repeat ? ' (svake sedmice)' : '')
+    };
+  }
+}
+</script>
+</body>
+</html>

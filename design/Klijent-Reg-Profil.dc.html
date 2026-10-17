@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<title>Registracija klijenta – profil</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&amp;family=Barlow+Condensed:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#121A16}a:hover{color:#4E5953}
+.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div style="width: 390px; height: 1000px; box-sizing: border-box; background: #F1F3F0; color: #121A16; font-family: 'Barlow', sans-serif; display: flex; flex-direction: column; padding: 20px 20px 24px; gap: 16px; overflow: hidden">
+
+  <div style="display: flex; align-items: center; gap: 10px">
+    <a href="Klijent-Reg-Nalog.dc.html" aria-label="Nazad na korak 1" style="width: 44px; height: 44px; flex: none; border-radius: 22px; background: #FFFFFF; border: 1px solid #DCE1DD; display: flex; align-items: center; justify-content: center; color: #121A16">
+      <svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg></a>
+    <div style="flex: 1">
+      <div style="font-size: 13px; color: #4E5953">Korak 2 od 3</div>
+      <div style="font-size: 16px; font-weight: 600">Profil</div>
+    </div>
+  </div>
+  <div role="img" aria-label="Korak 2 od 3" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px">
+    <div style="height: 6px; border-radius: 3px; background: #121A16"></div>
+    <div style="height: 6px; border-radius: 3px; background: #121A16"></div>
+    <div style="height: 6px; border-radius: 3px; background: #DCE1DD"></div>
+  </div>
+
+  <div>
+    <h1 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 32px; line-height: 1.05">Reci treneru nešto o sebi</h1>
+    <p style="margin: 4px 0 0; font-size: 15px; color: #4E5953">Na osnovu ovoga trener pravi program i jelovnik.</p>
+  </div>
+
+  <form style="display: flex; flex-direction: column; gap: 14px; margin: 0">
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <label for="datum" style="font-size: 14px; font-weight: 600">Datum rođenja</label>
+        <input id="datum" type="text" inputmode="numeric" placeholder="dd.mm.gggg" style="height: 50px; box-sizing: border-box; padding: 0 12px; border: 1.5px solid #DCE1DD; border-radius: 12px; background: #FFFFFF; font-family: 'Barlow', sans-serif; font-size: 17px; color: #121A16; min-width: 0">
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <label for="visina" style="font-size: 14px; font-weight: 600">Visina (cm)</label>
+        <input id="visina" type="text" inputmode="numeric" placeholder="npr. 168" style="height: 50px; box-sizing: border-box; padding: 0 12px; border: 1.5px solid #DCE1DD; border-radius: 12px; background: #FFFFFF; font-family: 'Barlow', sans-serif; font-size: 17px; color: #121A16; min-width: 0">
+      </div>
+    </div>
+
+    <fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px">
+      <legend style="font-size: 14px; font-weight: 600; padding: 0; margin-bottom: 8px">Glavni cilj</legend>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px">
+        <sc-for list="{{goals}}" as="g" hint-placeholder-count="5">
+          <button type="button" onClick="{{g.pick}}" aria-pressed="{{g.sel}}" style="height: 40px; padding: 0 14px; border-radius: 999px; border: 1.5px solid {{g.border}}; background: {{g.bg}}; color: {{g.fg}}; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 15px">{{g.label}}</button>
+        </sc-for>
+      </div>
+    </fieldset>
+
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <label for="povrede" style="font-size: 14px; font-weight: 600">Povrede ili zdravstvena ograničenja</label>
+      <textarea id="povrede" rows="2" placeholder="npr. lijevo koljeno (2024), bez skokova" style="box-sizing: border-box; padding: 12px 14px; border: 1.5px solid #DCE1DD; border-radius: 12px; background: #FFFFFF; font-family: 'Barlow', sans-serif; font-size: 16px; color: #121A16; resize: none"></textarea>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <label for="alergije" style="font-size: 14px; font-weight: 600">Alergije i namirnice koje ne jedeš</label>
+      <textarea id="alergije" rows="2" placeholder="npr. kikiriki, laktoza" style="box-sizing: border-box; padding: 12px 14px; border: 1.5px solid #DCE1DD; border-radius: 12px; background: #FFFFFF; font-family: 'Barlow', sans-serif; font-size: 16px; color: #121A16; resize: none"></textarea>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1.5px solid {{consentBorder}}; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+      <div style="display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700">
+        <svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3z"></path></svg>Zdravstveni podaci</div>
+      <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.45">
+        <input type="checkbox" checked="{{consent}}" onChange="{{toggleConsent}}" style="width: 20px; height: 20px; margin: 0; flex: none; accent-color: #121A16">
+        <span>Dajem saglasnost da FitBuddy čuva moje zdravstvene podatke i da ih vidi samo moj trener. Saglasnost mogu povući u podešavanjima.</span>
+      </label>
+    </div>
+
+    <sc-if value="{{consent}}" hint-placeholder-val="{{false}}">
+      <a href="Klijent-Reg-Mjerenja.dc.html" style="height: 52px; border-radius: 14px; background: #121A16; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 17px; text-decoration: none">Nastavi</a>
+    </sc-if>
+    <sc-if value="{{noConsent}}" hint-placeholder-val="{{true}}">
+      <button type="button" disabled="{{true}}" style="height: 52px; border-radius: 14px; border: 0; background: #DCE1DD; color: #4E5953; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 16px">Potrebna je saglasnost za nastavak</button>
+    </sc-if>
+  </form>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1000}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { goal: 'Redukcija masti', consent: false };
+  }
+  renderVals() {
+    const labels = ['Redukcija masti', 'Mišićna masa', 'Snaga', 'Kondicija', 'Opšte zdravlje'];
+    const goals = labels.map((l) => {
+      const sel = l === this.state.goal;
+      return {
+        label: l,
+        sel,
+        bg: sel ? '#121A16' : '#FFFFFF',
+        fg: sel ? '#FFFFFF' : '#121A16',
+        border: sel ? '#121A16' : '#DCE1DD',
+        pick: () => this.setState({ goal: l })
+      };
+    });
+    const c = this.state.consent;
+    return {
+      goals,
+      consent: c,
+      noConsent: !c,
+      consentBorder: c ? '#121A16' : '#DCE1DD',
+      toggleConsent: () => this.setState({ consent: !this.state.consent })
+    };
+  }
+}
+</script>
+</body>
+</html>

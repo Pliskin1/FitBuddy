@@ -1,0 +1,10 @@
+# Isti kraj reda (LF) na svim sistemima – Prettier i editorconfig to očekuju.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary

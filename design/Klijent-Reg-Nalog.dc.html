@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<title>Registracija klijenta – nalog</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&amp;family=Barlow+Condensed:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#121A16}a:hover{color:#4E5953}
+.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div style="width: 390px; height: 920px; box-sizing: border-box; background: #F1F3F0; color: #121A16; font-family: 'Barlow', sans-serif; display: flex; flex-direction: column; padding: 20px 20px 24px; gap: 16px; overflow: hidden">
+
+  <div style="display: flex; align-items: center; gap: 10px">
+    <a href="Auth-Prijava.dc.html" aria-label="Nazad na prijavu" style="width: 44px; height: 44px; flex: none; border-radius: 22px; background: #FFFFFF; border: 1px solid #DCE1DD; display: flex; align-items: center; justify-content: center; color: #121A16">
+      <svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg></a>
+    <div style="flex: 1">
+      <div style="font-size: 13px; color: #4E5953">Korak 1 od 3</div>
+      <div style="font-size: 16px; font-weight: 600">Nalog</div>
+    </div>
+  </div>
+  <div role="img" aria-label="Korak 1 od 3" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px">
+    <div style="height: 6px; border-radius: 3px; background: #121A16"></div>
+    <div style="height: 6px; border-radius: 3px; background: #DCE1DD"></div>
+    <div style="height: 6px; border-radius: 3px; background: #DCE1DD"></div>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 14px; padding: 16px; border-radius: 20px; background: #121A16; color: #FFFFFF">
+    <div aria-hidden="true" style="width: 52px; height: 52px; flex: none; border-radius: 26px; background: #C5F04A; color: #121A16; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px">NV</div>
+    <div>
+      <div style="font-size: 16px; font-weight: 700">Nikola Vuković te poziva u FitBuddy</div>
+      <div style="font-size: 13px; color: #C9D1CC; margin-top: 2px">Personalni trener · pozivnica važi do 24. oktobra</div>
+    </div>
+  </div>
+
+  <div>
+    <h1 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 32px; line-height: 1.05">Napravi nalog</h1>
+    <p style="margin: 4px 0 0; font-size: 15px; color: #4E5953">Nalog će biti povezan sa tvojim trenerom.</p>
+  </div>
+
+  <form style="display: flex; flex-direction: column; gap: 14px; margin: 0">
+    <sc-if value="{{viaCode}}" hint-placeholder-val="{{false}}">
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <label for="kod" style="font-size: 14px; font-weight: 600">Kod pozivnice</label>
+        <input id="kod" type="text" autocapitalize="characters" placeholder="FB-7K2Q-9M" style="height: 50px; box-sizing: border-box; padding: 0 14px; border: 1.5px solid #DCE1DD; border-radius: 12px; background: #FFFFFF; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 20px; letter-spacing: 2px; color: #121A16">
+      </div>
+    </sc-if>
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <label for="ime" style="font-size: 14px; font-weight: 600">Ime i prezime</label>
+      <input id="ime" type="text" autocomplete="name" placeholder="npr. Ana Petrović" style="height: 50px; box-sizing: border-box; padding: 0 14px; border: 1.5px solid #DCE1DD; border-radius: 12px; background: #FFFFFF; font-family: 'Barlow', sans-serif; font-size: 17px; color: #121A16">
+    </div>
+    <sc-if value="{{viaLink}}" hint-placeholder-val="{{true}}">
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <span id="email-label" style="font-size: 14px; font-weight: 600">Email</span>
+        <div aria-labelledby="email-label" style="height: 50px; box-sizing: border-box; padding: 0 14px; border: 1.5px solid #DCE1DD; border-radius: 12px; background: #EEF1EF; display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 17px; color: #4E5953">
+          <span>ana.petrovic@primjer.com</span>
+          <svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+        </div>
+        <span style="display: inline-flex; align-items: center; gap: 4px; font-size: 13px; color: #1F7A45; font-weight: 600">
+          <svg class="ic" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Iz pozivnice – već potvrđen</span>
+      </div>
+    </sc-if>
+    <sc-if value="{{viaCode}}" hint-placeholder-val="{{false}}">
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <label for="email2" style="font-size: 14px; font-weight: 600">Email</label>
+        <input id="email2" type="email" autocomplete="email" placeholder="ime@primjer.com" style="height: 50px; box-sizing: border-box; padding: 0 14px; border: 1.5px solid #DCE1DD; border-radius: 12px; background: #FFFFFF; font-family: 'Barlow', sans-serif; font-size: 17px; color: #121A16">
+        <span style="font-size: 13px; color: #4E5953">Na ovaj email stiže link za potvrdu.</span>
+      </div>
+    </sc-if>
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <label for="loz" style="font-size: 14px; font-weight: 600">Lozinka</label>
+      <input id="loz" type="password" autocomplete="new-password" placeholder="najmanje 8 znakova" style="height: 50px; box-sizing: border-box; padding: 0 14px; border: 1.5px solid #DCE1DD; border-radius: 12px; background: #FFFFFF; font-family: 'Barlow', sans-serif; font-size: 17px; color: #121A16">
+      <div role="img" aria-label="Jačina lozinke: dobra" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; margin-top: 2px">
+        <div style="height: 4px; border-radius: 2px; background: #121A16"></div>
+        <div style="height: 4px; border-radius: 2px; background: #121A16"></div>
+        <div style="height: 4px; border-radius: 2px; background: #121A16"></div>
+        <div style="height: 4px; border-radius: 2px; background: #DCE1DD"></div>
+      </div>
+      <span style="font-size: 13px; color: #4E5953">Dobra · dodaj znak (!?#) za jaču lozinku</span>
+    </div>
+    <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.4; padding: 4px 0">
+      <input type="checkbox" required="{{true}}" style="width: 20px; height: 20px; margin: 0; flex: none; accent-color: #121A16">
+      <span>Prihvatam <a href="#uslovi">uslove korišćenja</a> i <a href="#privatnost">politiku privatnosti</a>.</span>
+    </label>
+    <a href="Klijent-Reg-Profil.dc.html" style="height: 52px; border-radius: 14px; background: #121A16; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 17px; text-decoration: none">Nastavi</a>
+  </form>
+
+  <a href="Auth-Prijava.dc.html" style="text-align: center; font-size: 14px; font-weight: 600; min-height: 44px; display: flex; align-items: center; justify-content: center">Već imaš nalog? Prijavi se i prihvati poziv</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"ulaz":{"editor":"enum","options":["link iz emaila","kod pozivnice"],"default":"link iz emaila"},"$preview":{"width":390,"height":920}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const code = (this.props.ulaz ?? 'link iz emaila') === 'kod pozivnice';
+    return { viaCode: code, viaLink: !code };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<title>Pozovi klijenta</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&amp;family=Barlow+Condensed:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#121A16}a:hover{color:#4E5953}
+.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div role="dialog" aria-labelledby="poziv-naslov" style="width: 600px; height: 880px; box-sizing: border-box; background: #FFFFFF; color: #121A16; font-family: 'Barlow', sans-serif; padding: 28px 32px; display: flex; flex-direction: column; gap: 18px; overflow: hidden">
+
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px">
+    <div>
+      <h1 id="poziv-naslov" style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 34px; line-height: 1.05">Pozovi klijenta</h1>
+      <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.45; color: #4E5953">Klijent dobija pozivnicu i sam otvara nalog. Pozivnica važi 7 dana i može se iskoristiti samo jednom.</p>
+    </div>
+    <a href="Trener-Kontrolna.dc.html" aria-label="Zatvori" style="width: 44px; height: 44px; flex: none; border-radius: 22px; background: #F1F3F0; display: flex; align-items: center; justify-content: center; color: #121A16">
+      <svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg></a>
+  </div>
+
+  <div role="group" aria-label="Način slanja" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 4px; border-radius: 14px; background: #F1F3F0">
+    <button type="button" onClick="{{pickEmail}}" aria-pressed="{{isEmail}}" style="height: 42px; border: 0; border-radius: 10px; background: {{emailBg}}; color: #121A16; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 8px">
+      <svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>Na email</button>
+    <button type="button" onClick="{{pickCode}}" aria-pressed="{{isCode}}" style="height: 42px; border: 0; border-radius: 10px; background: {{codeBg}}; color: #121A16; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 8px">
+      <svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"></path><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"></path></svg>Link ili kod</button>
+  </div>
+
+  <sc-if value="{{isEmail}}" hint-placeholder-val="{{true}}">
+    <form style="display: flex; flex-direction: column; gap: 14px; margin: 0">
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <label for="p-email" style="font-size: 14px; font-weight: 600">Email klijenta</label>
+          <input id="p-email" type="email" placeholder="ime@primjer.com" style="height: 48px; box-sizing: border-box; padding: 0 14px; border: 1.5px solid #DCE1DD; border-radius: 12px; font-family: 'Barlow', sans-serif; font-size: 16px; color: #121A16; min-width: 0">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <label for="p-ime" style="font-size: 14px; font-weight: 600">Ime <span style="font-weight: 400; color: #4E5953">(opciono)</span></label>
+          <input id="p-ime" type="text" placeholder="npr. Marija" style="height: 48px; box-sizing: border-box; padding: 0 14px; border: 1.5px solid #DCE1DD; border-radius: 12px; font-family: 'Barlow', sans-serif; font-size: 16px; color: #121A16; min-width: 0">
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <label for="p-poruka" style="font-size: 14px; font-weight: 600">Lična poruka <span style="font-weight: 400; color: #4E5953">(opciono)</span></label>
+        <textarea id="p-poruka" rows="3" placeholder="Zdravo! Ovdje ćeš vidjeti termine, jelovnik i program. Vidimo se na treningu." style="box-sizing: border-box; padding: 12px 14px; border: 1.5px solid #DCE1DD; border-radius: 12px; font-family: 'Barlow', sans-serif; font-size: 15px; color: #121A16; resize: none"></textarea>
+      </div>
+      <button type="button" style="height: 50px; border: 0; border-radius: 14px; background: #121A16; color: #FFFFFF; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 16px">Pošalji pozivnicu</button>
+    </form>
+  </sc-if>
+
+  <sc-if value="{{isCode}}" hint-placeholder-val="{{false}}">
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 18px; border-radius: 16px; background: #121A16; color: #FFFFFF">
+        <div>
+          <div style="font-size: 13px; color: #C9D1CC">Kod pozivnice</div>
+          <div style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 38px; letter-spacing: 3px; color: #C5F04A; line-height: 1.1">FB-7K2Q-9M</div>
+        </div>
+        <button type="button" style="height: 44px; padding: 0 16px; border: 0; border-radius: 12px; background: #FFFFFF; color: #121A16; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 8px">
+          <svg class="ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>Kopiraj</button>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border-radius: 12px; border: 1.5px solid #DCE1DD">
+        <span style="font-size: 15px; font-weight: 600">fitbuddy.app/p/7K2Q9M</span>
+        <button type="button" style="height: 40px; padding: 0 14px; border: 1.5px solid #DCE1DD; border-radius: 10px; background: #FFFFFF; color: #121A16; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 14px">Kopiraj link</button>
+      </div>
+      <div style="display: flex; gap: 10px; font-size: 14px; line-height: 1.45; color: #4E5953">
+        <svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; margin-top: 1px"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 7.5v.5"></path></svg>
+        <span>Kod šalješ kako ti odgovara (poruka, Viber, WhatsApp). Važi 7 dana i za jednu osobu, a klijent na kraju potvrđuje email.</span>
+      </div>
+      <button type="button" style="height: 46px; border: 1.5px solid #121A16; border-radius: 12px; background: #FFFFFF; color: #121A16; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 15px">Napravi novi kod</button>
+    </div>
+  </sc-if>
+
+  <div style="height: 1px; background: #DCE1DD"></div>
+
+  <section aria-label="Poslate pozivnice" style="display: flex; flex-direction: column; gap: 4px">
+    <h2 style="margin: 0 0 6px; font-size: 18px; font-weight: 600">Poslate pozivnice</h2>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid #EEF1EF">
+      <div style="flex: 1 1 220px; min-width: 0">
+        <div style="font-size: 15px; font-weight: 600">marija.s@primjer.com</div>
+        <div style="font-size: 13px; color: #4E5953">poslata 15.10. · ističe 22.10.</div>
+      </div>
+      <span style="display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 999px; background: #F8EEDC; color: #8F5207; font-size: 13px; font-weight: 600"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Poslata</span>
+      <div style="display: flex; gap: 6px">
+        <button type="button" style="height: 36px; padding: 0 12px; border: 1.5px solid #DCE1DD; border-radius: 10px; background: #FFFFFF; color: #121A16; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 13px">Pošalji ponovo</button>
+        <button type="button" style="height: 36px; padding: 0 12px; border: 1.5px solid #DCE1DD; border-radius: 10px; background: #FFFFFF; color: #B42318; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 13px">Opozovi</button>
+      </div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid #EEF1EF">
+      <div style="flex: 1 1 220px; min-width: 0">
+        <div style="font-size: 15px; font-weight: 600">ana.petrovic@primjer.com</div>
+        <div style="font-size: 13px; color: #4E5953">poslata 30.08. · nalog otvoren 01.09.</div>
+      </div>
+      <span style="display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 999px; background: #E6F2EA; color: #1F7A45; font-size: 13px; font-weight: 600"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Prihvaćena</span>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 10px 0">
+      <div style="flex: 1 1 220px; min-width: 0">
+        <div style="font-size: 15px; font-weight: 600">Kod FB-3HX1-2P</div>
+        <div style="font-size: 13px; color: #4E5953">napravljen 02.10. · niko ga nije iskoristio</div>
+      </div>
+      <span style="display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 999px; background: #EEF1EF; color: #4E5953; font-size: 13px; font-weight: 600"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M5.6 5.6l12.8 12.8"></path></svg>Istekla</span>
+      <button type="button" style="height: 36px; padding: 0 12px; border: 1.5px solid #DCE1DD; border-radius: 10px; background: #FFFFFF; color: #121A16; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 13px">Obnovi</button>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":600,"height":880}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { tab: 'email' };
+  }
+  renderVals() {
+    const e = this.state.tab === 'email';
+    return {
+      isEmail: e,
+      isCode: !e,
+      emailBg: e ? '#FFFFFF' : 'transparent',
+      codeBg: e ? 'transparent' : '#FFFFFF',
+      pickEmail: () => this.setState({ tab: 'email' }),
+      pickCode: () => this.setState({ tab: 'code' })
+    };
+  }
+}
+</script>
+</body>
+</html>

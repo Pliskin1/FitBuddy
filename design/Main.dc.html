@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<title>FitBuddy – vizuelni identitet</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&amp;family=Barlow+Condensed:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#121A16}a:hover{color:#4E5953}
+.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div style="width: 1280px; height: 900px; box-sizing: border-box; padding: 56px 64px; background: #F1F3F0; color: #121A16; font-family: 'Barlow', sans-serif; display: flex; flex-direction: column; gap: 36px">
+
+  <header style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px">
+    <div style="display: flex; align-items: center; gap: 18px">
+      <svg width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="FitBuddy znak">
+        <rect x="0" y="0" width="64" height="64" rx="18" style="fill: #121A16"></rect>
+        <path d="M13 34h9l5-13 9 22 5-9h10" style="fill: none; stroke: #C5F04A; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round"></path>
+      </svg>
+      <div>
+        <div style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 52px; line-height: 1; letter-spacing: -0.5px">FitBuddy</div>
+        <div style="font-size: 18px; color: #4E5953; margin-top: 6px">Trener planira. Klijent napreduje.</div>
+      </div>
+    </div>
+    <div style="font-size: 14px; color: #4E5953; text-align: right; line-height: 1.5">Vizuelni identitet<br>prijedlog v0.1 · oktobar 2026</div>
+  </header>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; flex: 1; min-height: 0">
+
+    <section style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 20px">
+      <h2 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 28px">Boje</h2>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 16px">
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <div style="height: 64px; border-radius: 12px; background: #121A16"></div>
+          <div style="font-weight: 600; font-size: 15px">Grafit · #121A16</div>
+          <div style="font-size: 13px; color: #4E5953">Tekst, tamni paneli, primarno dugme</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <div style="height: 64px; border-radius: 12px; background: #C5F04A"></div>
+          <div style="font-weight: 600; font-size: 15px">Limeta · #C5F04A</div>
+          <div style="font-size: 13px; color: #4E5953">Akcenat: napredak, rekordi, glavna akcija</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <div style="height: 64px; border-radius: 12px; background: #F1F3F0; border: 1px solid #DCE1DD"></div>
+          <div style="font-weight: 600; font-size: 15px">Kreda · #F1F3F0</div>
+          <div style="font-size: 13px; color: #4E5953">Pozadina aplikacije</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <div style="height: 64px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DCE1DD"></div>
+          <div style="font-weight: 600; font-size: 15px">Bijela · #FFFFFF</div>
+          <div style="font-size: 13px; color: #4E5953">Kartice i površine</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <div style="height: 64px; border-radius: 12px; background: #4E5953"></div>
+          <div style="font-weight: 600; font-size: 15px">Kamen · #4E5953</div>
+          <div style="font-size: 13px; color: #4E5953">Sekundarni tekst</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <div style="height: 64px; border-radius: 12px; background: #DCE1DD"></div>
+          <div style="font-weight: 600; font-size: 15px">Linija · #DCE1DD</div>
+          <div style="font-size: 13px; color: #4E5953">Okviri, mreža grafikona</div>
+        </div>
+      </div>
+      <div style="font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #4E5953; margin-top: 4px">Statusi (uvijek uz ikonu)</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px">
+        <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; background: #E6F2EA; color: #1F7A45; font-size: 14px; font-weight: 600">
+          <svg class="ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Potvrđen</span>
+        <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; background: #F8EEDC; color: #8F5207; font-size: 14px; font-weight: 600">
+          <svg class="ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Na čekanju</span>
+        <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; background: #F8E4E2; color: #B42318; font-size: 14px; font-weight: 600">
+          <svg class="ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>Otkazan</span>
+      </div>
+    </section>
+
+    <section style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 18px">
+      <h2 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 28px">Tipografija</h2>
+      <div style="font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #4E5953">Brojevi i naslovi · Barlow Condensed</div>
+      <div style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 64px; line-height: 1; letter-spacing: -1px">62,5 kg × 10</div>
+      <div style="font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 32px; line-height: 1.1">Trening danas</div>
+      <div style="height: 1px; background: #DCE1DD"></div>
+      <div style="font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #4E5953">Tekst · Barlow</div>
+      <p style="margin: 0; font-size: 17px; line-height: 1.5">Čučanj sa šipkom, 4 serije po 8–10 ponavljanja. Pauza 90 sekundi između serija.</p>
+      <div style="display: flex; flex-direction: column; gap: 6px; font-size: 15px">
+        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #DCE1DD; padding-bottom: 6px"><span style="font-weight: 600">Display</span><span style="color: #4E5953">56–64 px · 700</span></div>
+        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #DCE1DD; padding-bottom: 6px"><span style="font-weight: 600">Naslov 1</span><span style="color: #4E5953">32 px · 600</span></div>
+        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #DCE1DD; padding-bottom: 6px"><span style="font-weight: 600">Naslov 2</span><span style="color: #4E5953">22 px · 600</span></div>
+        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #DCE1DD; padding-bottom: 6px"><span style="font-weight: 600">Tekst</span><span style="color: #4E5953">16 px · 400 / 500</span></div>
+        <div style="display: flex; justify-content: space-between"><span style="font-weight: 600">Sitno</span><span style="color: #4E5953">13 px · 500</span></div>
+      </div>
+      <div style="font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 28px; letter-spacing: 2px; color: #4E5953; margin-top: auto">Č Ć Š Ž Đ · č ć š ž đ</div>
+    </section>
+
+    <section style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 18px">
+      <h2 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 28px">Komponente</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px">
+        <button type="button" style="height: 48px; padding: 0 20px; border: 0; border-radius: 14px; background: #121A16; color: #FFFFFF; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 16px">Zakaži termin</button>
+        <button type="button" style="height: 48px; padding: 0 20px; border: 0; border-radius: 14px; background: #C5F04A; color: #121A16; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 16px">Počni trening</button>
+        <button type="button" style="height: 48px; padding: 0 20px; border: 1.5px solid #121A16; border-radius: 14px; background: #FFFFFF; color: #121A16; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 16px">Otkaži</button>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <label for="demo-tezina" style="font-size: 14px; font-weight: 600">Težina (kg)</label>
+        <input id="demo-tezina" type="text" inputmode="decimal" placeholder="npr. 62,5" style="height: 48px; box-sizing: border-box; padding: 0 14px; border: 1.5px solid #DCE1DD; border-radius: 12px; font-family: 'Barlow', sans-serif; font-size: 17px; color: #121A16; background: #FFFFFF">
+      </div>
+      <div style="background: #121A16; color: #FFFFFF; border-radius: 18px; padding: 20px; display: flex; flex-direction: column; gap: 10px">
+        <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #C9D1CC">
+          <svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>Koraci danas</div>
+        <div style="display: flex; align-items: baseline; gap: 8px">
+          <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 48px; line-height: 1">7.842</span>
+          <span style="font-size: 16px; color: #C9D1CC">/ 10.000</span>
+        </div>
+        <div style="height: 8px; border-radius: 4px; background: #2C3631; overflow: hidden">
+          <div style="width: 78%; height: 8px; border-radius: 4px; background: #C5F04A"></div>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+        <span style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: #C5F04A; color: #121A16; font-size: 15px; font-weight: 700">
+          <svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"></path><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"></path></svg>Novi rekord · 62,5 kg × 9</span>
+        <span style="display: inline-flex; align-items: center; padding: 8px 14px; border-radius: 999px; background: #F1F3F0; color: #121A16; font-size: 15px; font-weight: 600">Dan A – Gornji dio</span>
+      </div>
+    </section>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

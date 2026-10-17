@@ -1,0 +1,96 @@
+.chart {
+  position: relative;
+  width: 100%;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+  touch-action: pan-y;
+}
+
+.grid {
+  stroke: var(--color-line-soft);
+  stroke-width: 1;
+}
+
+.axis {
+  fill: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.goal {
+  stroke: var(--color-stone);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 5;
+}
+
+.goalLabel {
+  fill: var(--text);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.area {
+  fill: var(--color-lime-tint);
+}
+
+.line {
+  fill: none;
+  stroke: var(--color-ink);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.point {
+  fill: var(--surface);
+  stroke: var(--color-ink);
+  stroke-width: 2;
+}
+
+.lastPoint {
+  fill: var(--color-lime);
+  stroke: var(--color-ink);
+  stroke-width: 2.5;
+}
+
+.valueLabel {
+  fill: var(--text);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  /* svijetli "oreol" oko teksta, da ostane čitljiv preko linije i tačaka */
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+.cursor {
+  stroke: var(--color-stone);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.tooltip {
+  position: absolute;
+  z-index: 1;
+  transform: translate(-50%, calc(-100% - 12px));
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--color-ink);
+  color: var(--color-white);
+  font-size: var(--text-sm);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.tooltip strong {
+  display: block;
+  font-variant-numeric: tabular-nums;
+}

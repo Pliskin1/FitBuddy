@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="sr-Latn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#121A16" />
+    <meta
+      name="description"
+      content="FitBuddy – termini, jelovnici, mjerenja i napredak klijenata na jednom mjestu."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>FitBuddy</title>
+    <style>
+      /* Ekran za pokretanje: vidi se dok se ne učitaju JS i mock API, da stranica nikad nije prazna. */
+      body {
+        margin: 0;
+        background: #f1f3f0;
+      }
+      .boot {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        font-family: 'Barlow', system-ui, sans-serif;
+        color: #4e5953;
+      }
+      .boot svg {
+        animation: boot-pulse 1.2s ease-in-out infinite;
+      }
+      @keyframes boot-pulse {
+        50% {
+          transform: scale(0.92);
+          opacity: 0.7;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .boot svg {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="boot" role="status" aria-live="polite">
+        <svg width="56" height="56" viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" rx="18" fill="#121A16" />
+          <path
+            d="M13 34h9l5-13 9 22 5-9h10"
+            fill="none"
+            stroke="#C5F04A"
+            stroke-width="5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <span>Učitavam FitBuddy…</span>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<title>Klijent – jelovnik</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&amp;family=Barlow+Condensed:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#121A16}a:hover{color:#4E5953}
+.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div style="width: 390px; height: 960px; box-sizing: border-box; background: #F1F3F0; color: #121A16; font-family: 'Barlow', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+  <main style="flex: 1; min-height: 0; padding: 20px 16px 16px; display: flex; flex-direction: column; gap: 14px">
+
+    <header style="padding: 0 4px">
+      <h1 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 34px; line-height: 1">Jelovnik</h1>
+      <div style="font-size: 14px; color: #4E5953; margin-top: 4px">Redukcija 1.900 kcal · važi do 15. novembra</div>
+    </header>
+
+    <div role="group" aria-label="Izbor dana" style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px">
+      <button type="button" style="height: 56px; border: 0; border-radius: 14px; background: #FFFFFF; color: #4E5953; font-family: 'Barlow', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 0"><span style="font-size: 12px">Pon</span><span style="font-size: 17px; font-weight: 700; color: #121A16">12</span></button>
+      <button type="button" style="height: 56px; border: 0; border-radius: 14px; background: #FFFFFF; color: #4E5953; font-family: 'Barlow', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 0"><span style="font-size: 12px">Uto</span><span style="font-size: 17px; font-weight: 700; color: #121A16">13</span></button>
+      <button type="button" style="height: 56px; border: 0; border-radius: 14px; background: #FFFFFF; color: #4E5953; font-family: 'Barlow', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 0"><span style="font-size: 12px">Sri</span><span style="font-size: 17px; font-weight: 700; color: #121A16">14</span></button>
+      <button type="button" style="height: 56px; border: 0; border-radius: 14px; background: #FFFFFF; color: #4E5953; font-family: 'Barlow', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 0"><span style="font-size: 12px">Čet</span><span style="font-size: 17px; font-weight: 700; color: #121A16">15</span></button>
+      <button type="button" style="height: 56px; border: 0; border-radius: 14px; background: #FFFFFF; color: #4E5953; font-family: 'Barlow', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 0"><span style="font-size: 12px">Pet</span><span style="font-size: 17px; font-weight: 700; color: #121A16">16</span></button>
+      <button type="button" aria-pressed="true" style="height: 56px; border: 0; border-radius: 14px; background: #121A16; color: #C9D1CC; font-family: 'Barlow', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 0"><span style="font-size: 12px">Sub</span><span style="font-size: 17px; font-weight: 700; color: #C5F04A">17</span></button>
+      <button type="button" style="height: 56px; border: 0; border-radius: 14px; background: #FFFFFF; color: #4E5953; font-family: 'Barlow', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 0"><span style="font-size: 12px">Ned</span><span style="font-size: 17px; font-weight: 700; color: #121A16">18</span></button>
+    </div>
+
+    <section aria-label="Dnevni unos" style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px">
+        <div style="display: flex; align-items: baseline; gap: 6px">
+          <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 40px; line-height: 1">{{kcal}}</span>
+          <span style="font-size: 15px; color: #4E5953">/ 1.900 kcal</span>
+        </div>
+        <span style="font-size: 14px; font-weight: 600">preostalo {{left}}</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <sc-for list="{{macros}}" as="m" hint-placeholder-count="3">
+          <div style="display: grid; grid-template-columns: 112px minmax(0, 1fr) 80px; gap: 10px; align-items: center; font-size: 14px">
+            <span style="color: #4E5953">{{m.label}}</span>
+            <div style="height: 8px; border-radius: 4px; background: #E4E8E5; overflow: hidden">
+              <div style="height: 8px; border-radius: 4px; background: #121A16; width: {{m.w}}"></div>
+            </div>
+            <span style="text-align: right; font-weight: 600">{{m.val}}</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section aria-label="Obroci" style="background: #FFFFFF; border: 1px solid #DCE1DD; border-radius: 20px; overflow: hidden">
+
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #EEF1EF">
+        <span aria-hidden="true" style="width: 26px; height: 26px; flex: none; border-radius: 13px; background: #121A16; color: #C5F04A; display: flex; align-items: center; justify-content: center">
+          <svg class="ic" width="14" height="14" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span>
+        <div style="flex: 1; min-width: 0">
+          <div style="font-size: 15px; font-weight: 600">Doručak <span style="font-weight: 400; color: #4E5953">· 08:00</span></div>
+          <div style="font-size: 13px; color: #4E5953; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Zobene pahuljice, grčki jogurt, borovnice</div>
+        </div>
+        <span style="font-size: 14px; font-weight: 600">420 kcal</span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #EEF1EF">
+        <span aria-hidden="true" style="width: 26px; height: 26px; flex: none; border-radius: 13px; background: #121A16; color: #C5F04A; display: flex; align-items: center; justify-content: center">
+          <svg class="ic" width="14" height="14" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span>
+        <div style="flex: 1; min-width: 0">
+          <div style="font-size: 15px; font-weight: 600">Užina <span style="font-weight: 400; color: #4E5953">· 10:30</span></div>
+          <div style="font-size: 13px; color: #4E5953">Jabuka, bademi</div>
+        </div>
+        <span style="font-size: 14px; font-weight: 600">210 kcal</span>
+      </div>
+
+      <div style="padding: 14px 16px; border-bottom: 1px solid #EEF1EF; background: #FAFBF9; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; align-items: center; gap: 12px">
+          <sc-if value="{{lunchDone}}" hint-placeholder-val="{{false}}">
+            <span aria-hidden="true" style="width: 26px; height: 26px; flex: none; border-radius: 13px; background: #121A16; color: #C5F04A; display: flex; align-items: center; justify-content: center">
+              <svg class="ic" width="14" height="14" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span>
+          </sc-if>
+          <sc-if value="{{lunchOpen}}" hint-placeholder-val="{{true}}">
+            <span aria-hidden="true" style="width: 26px; height: 26px; flex: none; box-sizing: border-box; border-radius: 13px; border: 2px solid #121A16"></span>
+          </sc-if>
+          <div style="flex: 1; min-width: 0; font-size: 17px; font-weight: 700">Ručak <span style="font-weight: 400; color: #4E5953; font-size: 15px">· 14:00</span></div>
+          <span style="font-size: 14px; font-weight: 600">612 kcal</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; padding-left: 38px">
+          <div style="display: flex; justify-content: space-between; gap: 8px; font-size: 15px">
+            <div>Pileća prsa · 150 g
+              <div style="display: inline-flex; align-items: center; gap: 4px; margin-left: 4px; padding: 1px 8px; border-radius: 999px; background: #EEF1EF; font-size: 12px; font-weight: 600; color: #4E5953">
+                <svg class="ic" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg>ili ćuretina</div>
+            </div>
+            <span style="color: #4E5953; white-space: nowrap">248 kcal</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; gap: 8px; font-size: 15px"><span>Basmati pirinač (suvi) · 80 g</span><span style="color: #4E5953; white-space: nowrap">280 kcal</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 8px; font-size: 15px"><span>Miješana salata · 200 g</span><span style="color: #4E5953; white-space: nowrap">40 kcal</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 8px; font-size: 15px"><span>Maslinovo ulje · 5 g</span><span style="color: #4E5953; white-space: nowrap">44 kcal</span></div>
+        </div>
+        <div style="display: flex; gap: 8px; padding-left: 38px">
+          <button type="button" onClick="{{toggleLunch}}" aria-pressed="{{lunchDone}}" style="flex: 1; height: 44px; border-radius: 12px; border: 0; background: {{lunchBtnBg}}; color: {{lunchBtnColor}}; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 15px">{{lunchBtnLabel}}</button>
+          <button type="button" aria-label="Dodaj komentar za ručak" style="width: 44px; height: 44px; border-radius: 12px; border: 1.5px solid #DCE1DD; background: #FFFFFF; color: #121A16; display: flex; align-items: center; justify-content: center; padding: 0">
+            <svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></button>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #EEF1EF">
+        <span aria-hidden="true" style="width: 26px; height: 26px; flex: none; box-sizing: border-box; border-radius: 13px; border: 2px solid #DCE1DD"></span>
+        <div style="flex: 1; min-width: 0">
+          <div style="font-size: 15px; font-weight: 600">Užina <span style="font-weight: 400; color: #4E5953">· 17:00</span></div>
+          <div style="font-size: 13px; color: #4E5953">Protein šejk, banana</div>
+        </div>
+        <span style="font-size: 14px; font-weight: 600">230 kcal</span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px">
+        <span aria-hidden="true" style="width: 26px; height: 26px; flex: none; box-sizing: border-box; border-radius: 13px; border: 2px solid #DCE1DD"></span>
+        <div style="flex: 1; min-width: 0">
+          <div style="font-size: 15px; font-weight: 600">Večera <span style="font-weight: 400; color: #4E5953">· 20:00</span></div>
+          <div style="font-size: 13px; color: #4E5953; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Losos, povrće na žaru, krompir</div>
+        </div>
+        <span style="font-size: 14px; font-weight: 600">428 kcal</span>
+      </div>
+    </section>
+  </main>
+
+  <nav aria-label="Glavna navigacija" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); background: #FFFFFF; border-top: 1px solid #DCE1DD; padding: 8px 6px 18px">
+    <a href="Klijent-Pocetna.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; text-decoration: none; color: #4E5953; font-size: 12px; font-weight: 600">
+      <span style="display: flex; align-items: center; justify-content: center; width: 48px; height: 28px">
+        <svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path><path d="M10 21v-6h4v6"></path></svg></span>Početna</a>
+    <a href="Klijent-Trening.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; text-decoration: none; color: #4E5953; font-size: 12px; font-weight: 600">
+      <span style="display: flex; align-items: center; justify-content: center; width: 48px; height: 28px">
+        <svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"></path></svg></span>Trening</a>
+    <a href="Klijent-Jelovnik.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; text-decoration: none; color: #121A16; font-size: 12px; font-weight: 700">
+      <span style="display: flex; align-items: center; justify-content: center; width: 48px; height: 28px; border-radius: 14px; background: #C5F04A">
+        <svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v18M4 3v5a3 3 0 0 0 6 0V3"></path><path d="M18 3c-2 0-3.5 2.5-3.5 6.5S16 14 18 14v7"></path></svg></span>Jelovnik</a>
+    <a href="Klijent-Termini.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; text-decoration: none; color: #4E5953; font-size: 12px; font-weight: 600">
+      <span style="display: flex; align-items: center; justify-content: center; width: 48px; height: 28px">
+        <svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="2.5"></rect><path d="M16 2.5v4M8 2.5v4M3 10h18"></path></svg></span>Termini</a>
+    <a href="Klijent-Mjerenja.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; text-decoration: none; color: #4E5953; font-size: 12px; font-weight: 600">
+      <span style="display: flex; align-items: center; justify-content: center; width: 48px; height: 28px">
+        <svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"></path><path d="m7 15 4-4 3 3 5-6"></path></svg></span>Mjerenja</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":960}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { lunchDone: false };
+  }
+  renderVals() {
+    const d = this.state.lunchDone;
+    const kcal = 630 + (d ? 612 : 0);
+    const fmt = (n) => n.toLocaleString('de-DE');
+    const p = 42 + (d ? 54 : 0);
+    const c = 78 + (d ? 68 : 0);
+    const f = 18 + (d ? 11 : 0);
+    const pct = (v, max) => Math.min(100, Math.round((v / max) * 100)) + '%';
+    return {
+      kcal: fmt(kcal),
+      left: fmt(1900 - kcal),
+      macros: [
+        { label: 'Proteini', w: pct(p, 150), val: p + ' / 150 g' },
+        { label: 'Ugljeni hidrati', w: pct(c, 190), val: c + ' / 190 g' },
+        { label: 'Masti', w: pct(f, 60), val: f + ' / 60 g' }
+      ],
+      lunchDone: d,
+      lunchOpen: !d,
+      lunchBtnLabel: d ? 'Pojedeno – poništi' : 'Označi kao pojedeno',
+      lunchBtnBg: d ? '#C5F04A' : '#121A16',
+      lunchBtnColor: d ? '#121A16' : '#FFFFFF',
+      toggleLunch: () => this.setState({ lunchDone: !this.state.lunchDone })
+    };
+  }
+}
+</script>
+</body>
+</html>

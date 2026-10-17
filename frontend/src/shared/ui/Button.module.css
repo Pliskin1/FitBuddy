@@ -1,0 +1,108 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--control-height);
+  padding: 0 var(--space-5);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease),
+    filter var(--duration-fast) var(--ease);
+}
+
+.sm {
+  min-height: var(--control-height-sm);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+}
+
+.full {
+  width: 100%;
+}
+
+.primary {
+  background: var(--color-ink);
+  color: var(--color-white);
+}
+.primary:hover {
+  background: var(--color-ink-soft);
+}
+
+.accent {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.accent:hover {
+  filter: brightness(0.95);
+}
+
+.secondary {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+.secondary:hover {
+  background: var(--surface-muted);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--text);
+}
+.ghost:hover {
+  background: var(--surface-muted);
+}
+
+.danger {
+  background: var(--surface);
+  color: var(--color-danger);
+  border-color: var(--color-danger-border);
+}
+.danger:hover {
+  background: var(--color-danger-bg);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.confirm {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}

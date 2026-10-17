@@ -1,0 +1,121 @@
+/* Zajednički rasporedi unutar stranica. */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.toolbar > * {
+  min-width: 0;
+}
+
+.grow {
+  flex: 1 1 240px;
+}
+
+/* Select u traci filtera: labela je skrivena, pa ga poravnavamo sa ostalim kontrolama. */
+.filterSelect {
+  flex: 0 1 220px;
+  min-width: 180px;
+}
+
+.filterSelect label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: var(--space-4);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: var(--space-4);
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.formActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding-top: var(--space-2);
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .split {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  }
+}
+
+.meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.refreshing {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-lime-strong);
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.definitions {
+  display: grid;
+  grid-template-columns: minmax(110px, auto) minmax(0, 1fr);
+  gap: var(--space-2) var(--space-4);
+  margin: 0;
+  font-size: var(--text-md);
+}
+
+.definitions dt {
+  color: var(--text-muted);
+}
+
+.definitions dd {
+  margin: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}

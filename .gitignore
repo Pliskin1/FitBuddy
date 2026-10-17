@@ -1,0 +1,25 @@
+# Zavisnosti
+node_modules/
+
+# Build
+dist/
+*.tsbuildinfo
+
+# Okruženje
+.env
+.env.local
+.env.*.local
+
+# Logovi
+*.log
+npm-debug.log*
+
+# Editori i sistem
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Claude Code – lična podešavanja ne idu u repo
+.claude/settings.local.json

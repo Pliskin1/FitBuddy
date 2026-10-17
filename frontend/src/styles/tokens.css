@@ -1,0 +1,113 @@
+/*
+ * FitBuddy dizajn tokeni – jedini izvor boja, tipografije, razmaka i oblika.
+ * Opis i pravila upotrebe: /DESIGN.md. Komponente koriste semantičke tokene (--bg, --text…),
+ * a ne sirove boje (--color-…), osim kad je boja dio identiteta (npr. limeta na tamnom panelu).
+ */
+:root {
+  /* Paleta */
+  --color-ink: #121a16; /* Grafit */
+  --color-ink-soft: #1e2823;
+  --color-lime: #c5f04a; /* Limeta – jedini akcenat */
+  --color-lime-strong: #9cc21f;
+  --color-lime-tint: #f3fadf;
+  --color-chalk: #f1f3f0; /* Kreda */
+  --color-white: #ffffff;
+  --color-stone: #4e5953; /* Kamen */
+  --color-line: #dce1dd; /* Linija */
+  --color-line-soft: #eef1ef;
+  --color-on-ink: #e3e8e5;
+  --color-on-ink-muted: #c9d1cc;
+  --color-ink-line: #2c3631;
+  --color-disabled-text: #7a847f;
+
+  /* Statusi – uvijek uz ikonu ili tekst, nikad sama boja */
+  --color-success: #1f7a45;
+  --color-success-bg: #e6f2ea;
+  --color-warning: #8f5207;
+  --color-warning-bg: #f8eedc;
+  --color-danger: #b42318;
+  --color-danger-bg: #f8e4e2;
+  --color-danger-border: #efc4bf;
+  --color-danger-on-ink: #ff9b8f;
+  --color-warning-border: #e9d2a6;
+
+  /* Loaderi */
+  --skeleton-base: var(--color-line-soft);
+  --skeleton-shine: #e2e6e3;
+
+  /* Semantički tokeni */
+  --bg: var(--color-chalk);
+  --surface: var(--color-white);
+  --surface-muted: var(--color-line-soft);
+  --text: var(--color-ink);
+  --text-muted: var(--color-stone);
+  --border: var(--color-line);
+  --border-strong: var(--color-ink);
+  --accent: var(--color-lime);
+  --on-accent: var(--color-ink);
+  --focus-ring: var(--color-lime-strong);
+
+  /* Tipografija */
+  --font-display: 'Barlow Condensed', 'Arial Narrow', 'Roboto Condensed', sans-serif;
+  --font-body: 'Barlow', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --text-xs: 0.75rem; /* 12 */
+  --text-sm: 0.875rem; /* 14 */
+  --text-md: 1rem; /* 16 */
+  --text-lg: 1.125rem; /* 18 */
+  --text-xl: 1.375rem; /* 22 */
+  --text-2xl: 2rem; /* 32 */
+  --text-3xl: 2.5rem; /* 40 */
+  --text-display: 3.25rem; /* 52 */
+  --leading-tight: 1.1;
+  --leading-normal: 1.5;
+
+  /* Razmaci (4 px mreža) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* Oblici */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(18, 26, 22, 0.06);
+  --shadow-md: 0 10px 30px rgba(18, 26, 22, 0.12);
+
+  /* Kontrole */
+  --control-height: 48px;
+  --control-height-sm: 38px;
+  --touch-min: 44px;
+
+  /* Raspored */
+  --sidebar-width: 248px;
+  --content-max: 1200px;
+  --bottom-nav-height: 68px;
+  --gutter: 16px;
+
+  /* Pokret */
+  --duration-fast: 150ms;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Prijelomne tačke (CSS varijable ne rade u @media, pa su ovdje kao dogovor):
+ *   mobilni   < 768 px   (dizajn se provjerava na 375 px)
+ *   tablet    ≥ 768 px
+ *   desktop   ≥ 1024 px  (bočni meni; dizajn se provjerava na 1440 px)
+ */
+@media (min-width: 768px) {
+  :root {
+    --gutter: 24px;
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    --gutter: 40px;
+  }
+}
