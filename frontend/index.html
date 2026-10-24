@@ -35,6 +35,27 @@
       .boot svg {
         animation: boot-pulse 1.2s ease-in-out infinite;
       }
+      /* Poruka ako pokretanje ne uspije (main.tsx → showStartupError). */
+      .boot strong {
+        color: #121a16;
+        font-size: 20px;
+      }
+      .boot span {
+        max-width: 44ch;
+        padding: 0 16px;
+        text-align: center;
+      }
+      .boot button {
+        min-height: 44px;
+        padding: 0 18px;
+        border: 0;
+        border-radius: 14px;
+        background: #121a16;
+        color: #fff;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+      }
       @keyframes boot-pulse {
         50% {
           transform: scale(0.92);

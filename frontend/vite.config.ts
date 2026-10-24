@@ -10,6 +10,9 @@ export default defineConfig({
     },
   },
   server: {
-    port: 5173,
+    // PORT dolazi od alata koji pokreće server (npr. preview u Claude aplikaciji kad je 5173 zauzet).
+    port: Number(process.env.PORT) || 5173,
+    // Bez tihog prelaska na drugi port: MSW service worker radi samo na adresi koju pregledač očekuje.
+    strictPort: true,
   },
 })

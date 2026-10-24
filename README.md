@@ -23,6 +23,8 @@ Otvori http://localhost:5173 i prijavi se jednim od demo naloga:
 
 Demo podaci se generišu u odnosu na današnji dan i čuvaju u pretraživaču. Dugme **„Vrati demo podatke”** ih vraća na početne.
 
+Ako je port 5173 zauzet (npr. već radi jedan `npm run dev`), server javlja grešku umjesto da tiho pređe na drugi port. Zaustavi stari server ili izaberi drugi port: `PORT=5180 npm run dev` (bash) odnosno `$env:PORT=5180; npm run dev` (PowerShell). Preview u Claude desktop aplikaciji (`.claude/launch.json`) sam bira slobodan port.
+
 ## Šta je napravljeno
 
 | Ekran                  | Trener                                                                                                   | Klijent                                    |
